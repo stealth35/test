@@ -5,8 +5,8 @@ php:
   - 5.4
 
 before_script:
-  - pyrus set php_ini `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
   - pyrus install pecl/memcached
   - pyrus build pecl/memcached
+  - echo "extension=memcached.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
 
 script: php -i
